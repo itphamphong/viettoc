@@ -1,0 +1,137 @@
+#round-how-it-work.round-tutoring-job ul li.i-work {
+  width: 288px;
+}
+#round-how-it-work.round-tutoring-job ul li.i-work .title {
+  font-size: 24px;
+  height: 40px;
+}
+#round-how-it-work.round-tutoring-job ul li.i-work .sum {
+  height: 30px;
+}
+
+.round-online-tutoring-jobs {
+  background: #fffae8;
+  float: left;
+  min-height: 585px;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 20px;
+}
+.round-online-tutoring-jobs .title-home {
+  text-align: center;
+}
+.round-online-tutoring-jobs .col-1, .round-online-tutoring-jobs .col-2, .round-online-tutoring-jobs .col-3 {
+  display: inline-block;
+  float: left;
+}
+.round-online-tutoring-jobs .col-1, .round-online-tutoring-jobs .col-3 {
+  width: 240px;
+  margin-top: 120px;
+}
+.round-online-tutoring-jobs .col-2 {
+  width: 612px;
+  margin: 0px 10px;
+}
+
+.round-tutor-comment {
+  width: 100%;
+  float: left;
+  height: 442px;
+  background: url("../images/bg_tutor_comment.jpg") no-repeat;
+  background-size: 100%;
+}
+.round-tutor-comment .title-home {
+  color: #fff;
+  text-align: center;
+  font-size: 36px;
+}
+.round-tutor-comment ul li .avatar {
+  float: left;
+  display: inline-block;
+  font-size: 80px;
+  background: #000;
+  color: #fff;
+  border-radius: 100%;
+}
+.round-tutor-comment ul li .avatar img {
+  border-radius: 100%;
+}
+.round-tutor-comment ul li .i-note {
+  display: inline-block;
+  float: left;
+  margin-left: 10px;
+  color: #fff;
+  width: 70%;
+  height: 110px;
+  float: left;
+  border-radius: 10px;
+  color: #fff;
+  line-height: 22px;
+  padding: 20px 70px;
+  position: relative;
+  background-image: url("../images/bg-i-note.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: left top;
+}
+.round-tutor-comment ul li .i-note:before {
+  display: none;
+}
+
+.col-ready {
+  display: inline-block;
+  float: left;
+}
+.col-ready .title {
+  font-size: 24px;
+  color: #333333;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 10px 0px;
+}
+
+.col-ready.right {
+  float: right;
+}
+
+.title-ready {
+  color: #333333;
+  font-size: 30px;
+  text-align: center;
+}
+
+.btn-become {
+  background: #FE4904;
+  margin: auto;
+  height: 50px;
+  line-height: 50px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 0px 10px;
+  display: block;
+  width: 220px;
+  text-align: center;
+}
+
+/* detail */
+.left-tutor {
+  float: left;
+  width: 770px;
+}
+.left-tutor .tab-detail-tutor {
+  border-bottom: solid 1px #000;
+  padding-bottom: 10px;
+  float: left;
+  width: 100%;
+}
+.left-tutor .tab-detail-tutor li {
+  display: inline-block;
+  float: left;
+  font-size: 18px;
+  color: #333333;
+  padding: 0px 10px;
+  float: left;
+}
+.left-tutor .tab-detail-tutor li:hover, .left-tutor .tab-detail-tutor li.active {
+  color: #fe4904;
+  border-bottom: solid 1px #fe4904;
+}

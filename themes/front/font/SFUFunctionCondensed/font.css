@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'SFUFunctionCondensed';
+  src: url('SFUFunctionCondensed.woff') format('woff'),
+       url('SFUFunctionCondensed.ttf') format('truetype'),
+       url('SFUFunctionCondensed.svg#SFUFunctionCondensed') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'sfufunctioncondensed-webfont';
+  src: url('sfufunctioncondensed-webfont.eot');
+  src: url('sfufunctioncondensed-webfont.eot?#iefix') format('embedded-opentype'),
+       url('sfufunctioncondensed-webfont.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+

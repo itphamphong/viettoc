@@ -1,0 +1,33 @@
+#contact-form {
+  h2 {
+    text-transform: uppercase;
+    margin-bottom: 10px
+  }
+  input {
+    width: 31%;
+    margin-right: 10px;
+    margin-bottom: 17px;
+    display: inline-block;
+    background-color: #fafafa;
+    font-family: inherit;
+    border: 1px solid #eaeaea;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    color: #79868a;
+    font-size: 12px;
+    padding: 6px 6px 6px 14px;
+    height: 37px;
+  }
+  textarea {
+    padding: 10px 6px 10px 14px;
+    min-height: 130px;
+    display: block;
+    width: 100%;
+    resize: vertical;
+    background-color: #fafafa;
+    border: 1px solid #eaeaea;
+  }
+  #img-captcha{ display: inline-block}
+  #captcha{ margin-top: 5px; display: inline-block}
+}

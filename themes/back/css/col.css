@@ -1,0 +1,73 @@
+.block{ display: block}
+/* col */
+.col1{ width: 100px}
+.col2{ width: 200px}
+.col3{ width: 300px}
+.col4{ width: 400px}
+.col5{ width: 500px}
+.col6{ width: 600px}
+.col7{ width: 700px}
+.col8{ width: 800px}
+.col9{ width: 900px}
+.col10{ width: 1000px}
+.col11{ width: 1100px}
+.col12{ width: 1200px}
+.col13{ width: 1300px}
+.col_full{width: 100%}
+/* span */
+.span1{ width: 10px}
+.span2{ width: 20px}
+.span3{ width: 30px}
+.span4{ width: 40px}
+.span5{ width: 50px}
+.span5{ width: 60px}
+.clear{ clear: both}
+/* height*/
+.he1{ height: 10px}
+.he2{ height: 20px}
+.he3{ height: 30px}
+.he4{ height: 40px}
+.he5{ height: 50px}
+.he6{ height: 60px}
+.he7{ height: 70px}
+.he8{ height: 80px}
+/* padding*/
+.pad0{ padding: 0px !important}
+.pad1{ padding: 10px}
+.pad2{ padding: 20px}
+.pad3{ padding: 30px}
+.ptop1{ padding-top: 10px}
+.padl1{ padding-left: 10px}
+.padl2{ padding-left: 20px}
+.padr1{ padding-right: 10px}
+.padr2{ padding-right: 20px}
+.pbottom1{ padding-bottom: 10px}
+.pr0{ padding-right: 0px !important}
+.pl0{ padding-left: 0px !important}
+/* fload */
+.fleft{ float: left}
+.fright{ float: right !important}
+/* margin*/
+.m_0{ margin: 0px}
+.m_auto{ margin: auto}
+.mtop1{ margin-top: 10px}
+.mtop2{ margin-top: 20px}
+.mleft1{margin-left: 10px}
+.mleft2{margin-left: 20px}
+.margin10{ margin: 10px}
+/*  position*/
+.relative{ position: relative}
+.absolute{ position: absolute}
+.top0{top:0px}
+.top1{top:10px}
+.top2{top:20px}
+.top3{top:30px}
+.top4{top:40px}
+.right0{ right: 0px}
+.bottom0{ bottom: 0px}
+.left0{ left: 0px !important}
+/* bold*/
+.bold{ font-weight: bold}
+/* font*/
+.size20{ font-size: 20px}
+

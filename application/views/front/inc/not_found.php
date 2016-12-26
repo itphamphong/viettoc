@@ -1,0 +1,1 @@
+<p style="text-align: center"><img  src="themes/images/layout/page_not_found.jpg"/></p>

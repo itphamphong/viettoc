@@ -1,0 +1,611 @@
+#notification {
+  height: 50px;
+  background: $c-special;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  top: -50px;
+  z-index: 1000;
+  font-size: 18px;
+  line-height: 50px;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+#notification.active {
+  top: 0px
+}
+
+body.active div:not(#notification) {
+  opacity: 0.5
+}
+
+#header {
+  height: 160px;
+  width: 100%;
+  background: #fff
+}
+
+#logo {
+  margin-top: 38px
+}
+
+#menu-language {
+  margin: 6px 0px;
+  float: right;
+  margin-left: 10px;
+  li {
+    display: inline-block;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 16px;
+    a {
+      color: #fff
+    }
+    a.active {
+      color: #1ea7d4;
+    }
+  }
+}
+
+#menu-top-right {
+  margin: 10px 0px;
+  text-align: right;
+  li {
+    display: inline-block;;
+    color: #666666;
+    font-size: 14px;
+    margin-left: 10px;
+    a {
+      color: #666666
+    }
+    a:hover {
+      color: #1ea7d4
+    }
+  }
+}
+
+#menu-search {
+  text-align: right;
+  margin: 10px 0px;
+  float: right;
+  label {
+    color: #666666;
+    margin-top: 4px;
+    display: inline-block;
+    font-weight: normal;
+    float: left;
+    margin-right: 10px;
+  }
+  .round-input-search {
+    width: 290px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 0px;
+    border-radius: 4px;
+    display: inline-block;
+    border: solid 1px #666666;
+    float: left;
+    span {
+      width: 29px;
+      height: 28px;
+      background: #fff;
+      display: inline-block;
+      float: left;
+      border-radius: 4px 0px 0px 4px;
+      text-align: center;
+      color: #0066cc;
+      line-height: 27px
+    }
+    input {
+      width: 250px;
+      border: none;
+      background: none;
+      height: 30px;
+      text-indent: 10px;
+    }
+  }
+}
+
+#menu-top {
+  float: left;
+  margin-bottom: 10px;
+  li {
+    display: inline-block;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 15px;
+    padding: 14px 4px;
+    a {
+      color: #fff
+    }
+  }
+  li:hover, li.active {
+    background: #1ea7d4
+  }
+}
+
+.text-info-banner {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  margin-top: 10px;
+  strong {
+    font-size: 36px
+  }
+}
+
+#round-menu-top {
+  height: 50px;
+  width: 100%;
+  background: rgba(80, 112, 130, 0.63);
+  position: absolute;
+  z-index: 10000;
+}
+
+#menu-mobile {
+  height: 50px;
+  width: 100%;
+  background: rgba(80, 112, 130, 0.63);
+  z-index: 10000;
+}
+
+#menu-social {
+  float: right;
+  li {
+    display: inline-block;
+    margin: 10px;
+    a {
+      width: 34px;
+      height: 34px;
+      border-radius: 4px;
+      background: #1fa6d3;
+      color: #fff;
+      line-height: 34px;
+      text-align: center;
+      display: inline-block;
+      font-size: 25px;
+    }
+    a:hover {
+      background: #1c98c1
+    }
+  }
+}
+
+#navigationMenu {
+  width: 40px;
+  height: 215px;
+  position: fixed;
+  top: 45%;
+  z-index: 50000
+}
+
+#navigationMenu li {
+  list-style: none;
+  height: 39px;
+  width: 40px;
+  background: #7d7d7d;
+  margin-bottom: 5px;
+}
+
+#navigationMenu li:hover, #navigationMenu li.active {
+  background: #1ea7d4
+}
+
+#navigationMenu span {
+  /* Container properties */
+  width: 0;
+  left: 38px;
+  padding: 0;
+  position: absolute;
+  overflow: hidden;
+  /* Text properties */
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.6px;
+  white-space: nowrap;
+  line-height: 39px;
+
+  /* CSS3 Transition: */
+  -webkit-transition: 0.25s;
+  z-index: 5000;
+
+  /* Future proofing (these do not work yet): */
+  -moz-transition: 0.25s;
+  transition: 0.25s;
+}
+
+#navigationMenu a {
+  height: 39px;
+  width: 38px;
+  display: block;
+  position: relative;
+}
+
+#navigationMenu a i {
+  font-size: 30px;
+  position: absolute;
+  left: 3px;
+  top: 5px;
+  color: #fff
+}
+
+/* General hover styles */
+
+#navigationMenu a:hover span {
+  width: auto;
+  padding: 0 20px;
+  overflow: visible;
+  color: #fff;
+}
+
+#navigationMenu a:hover {
+  text-decoration: none;
+
+  /* CSS outer glow with the box-shadow property */
+  -moz-box-shadow: 0 0 5px #1ea7d4;
+  -webkit-box-shadow: 0 0 5px #1ea7d4;
+  box-shadow: 0 0 5px #1ea7d4;
+  color: #fff;
+  color: #fff;
+}
+
+/* Green Button */
+
+#navigationMenu .home {
+  background-position: 0 0;
+}
+
+#navigationMenu .home:hover {
+  background-position: 0 -39px;
+}
+
+#navigationMenu .home span {
+  background-color: #1ea7d4;
+
+}
+
+/* Blue Button */
+
+#navigationMenu .about {
+  background-position: -38px 0;
+}
+
+#navigationMenu .about:hover {
+  background-position: -38px -39px;
+}
+
+#navigationMenu .about span {
+  background-color: #1ea7d4;
+
+}
+
+/* Orange Button */
+
+#navigationMenu .services {
+  background-position: -76px 0;
+}
+
+#navigationMenu .services:hover {
+  background-position: -76px -39px;
+}
+
+#navigationMenu .services span {
+  background-color: #1ea7d4;
+
+}
+
+/* Yellow Button */
+
+#navigationMenu .portfolio {
+  background-position: -114px 0;
+}
+
+#navigationMenu .portfolio:hover {
+  background-position: -114px -39px;
+}
+
+#navigationMenu .portfolio span {
+  background-color: #1ea7d4;
+
+}
+
+/* Purple Button */
+
+#navigationMenu .contact {
+  background-position: -152px 0;
+}
+
+#navigationMenu .contact:hover {
+  background-position: -152px -39px;
+}
+
+#navigationMenu .contact span {
+  background-color: #1ea7d4;
+
+}
+
+.round-menu-mobile {
+  width: 100%;
+  height: 30px;
+  float: left;
+  background: #507082;
+}
+
+#r-menu {
+  position: absolute;
+  width: 300px;
+  top: 170px;
+  left: -100%;
+  height: auto;
+  z-index: 120000;
+  border-top: solid 1px #fff;
+  transition-duration: 1s;
+}
+
+#cssmenu ul {
+  padding: 0px;
+  margin: 0px;
+  width: 100%
+}
+
+#cssmenu ul li {
+  display: block;
+  float: left;
+  width: 100%
+}
+
+#cssmenu ul li a:hover, #cssmenu ul li:hover a {
+  text-decoration: none !important;
+  border-bottom: none
+}
+
+#cssmenu > ul > li {
+  color: #fff;
+  background: #507082;
+  font-size: 13px;
+  text-decoration: none;
+  padding: 9px 20px;
+  cursor: pointer;
+  z-index: 2;
+  border-bottom: 1px solid #fff;
+  display: block;
+  text-transform: uppercase;
+}
+
+#cssmenu > ul > li a {
+  color: #fff;
+  float: left;
+  width: 100%
+}
+
+#cssmenu > ul > li i {
+  font-size: 18px;
+  margin-right: 10px
+}
+
+#cssmenu > ul > li > a:hover,
+#cssmenu > ul > li.active > a,
+#cssmenu > ul > li.open > a {
+  color: #fff;
+  background: #507082;
+  border-bottom: 1px solid #fff;
+  text-decoration: none !important;
+}
+
+.holder {
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 0;
+
+  right: 0;
+  display: none
+}
+
+.holder::after, .holder::before {
+  width: 6px;
+  height: 6px;
+  display: block;
+  content: '';
+  position: absolute;
+  right: 20px;
+  z-index: 10;
+  -webkit-transform: rotate(-135deg);
+  -moz-transform: rotate(-135deg);
+  -ms-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+
+  transform: rotate(-135deg)
+}
+
+.holder::after {
+  border-top: 1px solid #333;
+  border-left: 1px solid #333;
+  top: 17px
+}
+
+.holder::before {
+  border-top: 1px solid;
+  border-left: 1px solid;
+  border-top-color: inherit;
+  border-left-color: inherit;
+  top: 18px
+}
+
+#cssmenu ul li {
+  list-style: none
+}
+
+#cssmenu ul ul li a {
+  background: #FE4904;
+  color: #333;
+  text-decoration: none;
+  font-size: 13px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-bottom: 1px solid #fff;
+  z-index: 1;
+  display: block;
+}
+
+#cssmenu ul ul li:hover > a,
+#cssmenu ul ul li.open > a,
+#cssmenu ul ul li.active > a {
+  background: #f4f4f4;
+  color: #333
+}
+
+#cssmenu ul ul li ul li {
+  border: none
+}
+
+#cssmenu ul ul li a:hover {
+  background: #FE4904
+}
+
+#cssmenu ul ul li ul li > a {
+  font-family: 'sans-r', Arial, Helvetica, sans-serif;
+  text-transform: none;
+  border-bottom: 1px dashed #ddd;
+  background: #fff;
+}
+
+#cssmenu ul ul li ul li > a:hover {
+  background: #fff;
+  color: #fff
+}
+
+#cssmenu ul ul li:first-child > a {
+  box-shadow: none;
+
+}
+
+#cssmenu ul ul ul li a {
+  padding-left: 40px
+}
+
+#cssmenu ul ul li.has-sub > a::after {
+  display: block;
+  content: '';
+  width: 8px;
+  height: 8px;
+  position: absolute;
+  right: 20px;
+  z-index: 10;
+  top: 14.5px;
+}
+
+#cssmenu ul ul li.active > a::after,
+#cssmenu ul ul li.open > a::after,
+#cssmenu ul ul li > a:hover::after {
+  border-color: #fff
+}
+
+#cssmenu > ul > li.open > a,
+#cssmenu > ul > li:last-child > a {
+  /*border-bottom:1px solid #dddede*/
+}
+
+#cssmenu > ul > li.last > a {
+  border-bottom: 0px
+}
+
+#cssmenu > ul > li > ul > li:last-child > a,
+#cssmenu > ul > li > ul > li.last > a,
+#cssmenu > ul > li > ul > li.open:last-child > ul > li:last-child > a {
+  border-bottom: 0
+}
+
+.opacity {
+  opacity: 0.2
+}
+
+.inline-block {
+  display: inline-block !important
+}
+
+#menu-checked:checked ~ #icon-menu {
+  background-position: -8px -31px !important;
+}
+
+#menu-checked:checked ~ #r-menu {
+  top: 40px
+}
+
+#language {
+  float: right;
+  color: #fff;
+  margin: 10px
+}
+
+#language a {
+  color: #fff
+}
+
+#menu-icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  margin-top: 13px
+}
+
+#language a.active {
+  font-weight: bold
+}
+
+#menu-icon:after, #menu-icon:before {
+  box-shadow: 0 0 0 2px #fff, 0 7px 0 2px #fff, 0 14px 0 2px #fff;
+  display: block;
+  margin: 5px 11px;
+  width: 20px; margin-left: 0px;
+}
+
+#menu-icon:after, #menu-icon:before, #nav:before {
+  height: 0;
+  content: '';
+}
+
+#toggle:checked ~ #r-menu {
+  opacity: 1;
+  left: 0px
+}
+
+#toggle:checked ~ #menu-mobile #menu-icon:after, #toggle:checked ~ #menu-mobile #menu-icon:before {
+  background: #FE4904;
+  box-shadow: 0 0 0 1px #fff;
+  margin-left: -10px;
+  position: relative;
+  left: 50%;
+  top: 23%;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  transition: transform .8s
+}
+
+#nav, #nav ul, #nav ul li, #nav > li {
+  margin: 0
+}
+
+#toggle:checked ~ #menu-mobile #menu-icon:after {
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg)
+}
+
+#round-hide {
+  position: absolute;
+  left: 0px;
+  top: 170px;
+  width: 100%;
+  height: 0%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+}
+
+#toggle:checked ~ #round-hide {
+  height: 100%
+}
+

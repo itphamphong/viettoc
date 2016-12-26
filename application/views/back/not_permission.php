@@ -1,0 +1,1 @@
+<p style=" width: 100%; text-align: center"><img  src="<?php echo base_url() ?>themes/back/images/lock.png"/></p>
