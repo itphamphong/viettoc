@@ -1,11 +1,66 @@
-<div id="round-menu-top" class="im_relative">
-    <div class="container">
-        <?php $this->load->view('front/block/menu_top')?>
+<?php
+$CI =& get_instance();
+$CI->load->model('category/a_category');
+$list_cate = $CI->a_category->show_list_category_page(array("category_top" => 0, "category_status" => 1), $lang, 0);
+?>
+<section>
+    <div class=" default_width">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 hidden-sm hidden-xs">
+                    <ul class="ui-menu-categories page-menu">
+                        <li class="first">DANH MỤC SẢN PHẨM<i class="fa fa-bars"></i></li>
+                        <?php foreach ($list_cate as $cate) {
+                            if ($cate->choose_upload == 1) {
+                                $src = base_url() . "uploads/Images/product/" . $cate->picture;
+                            } else if ($cate->choose_upload == 2) {
+                                $src = base_url() . $list->picture;
+                            }
+                            $list_child = $CI->a_category->show_list_category_page(array("category_top" => $cate->id, "category_status" => 1), $lang, 0);
+                            ?>
+                            <li class="h">
+                                <span>
+                                    <img src="<?php echo $src ?>">
+                                </span>
+                                <a href="<?php echo $cate->category_link ?>">
+                                    <?php echo $cate->category_name ?><i class="fa fa-angle-right hidden-xs"></i>
+                                </a>
+                                <?php if (count($list_child)) { ?>
+                                    <ul>
+                                        <?php foreach ($list_child as $child) {
+                                            if ($child->choose_upload == 1) {
+                                                $src_child = base_url() . "uploads/Images/product/" . $child->picture;
+                                            } else if ($child->choose_upload == 2) {
+                                                $src_child = base_url() . $child->picture;
+                                            }
+                                            ?>
+                                            <li>
+                                                <span><img src="<?php echo $src_child ?>"></span>
+                                                <a href=""><?php echo $child->category_name ?><i class="hidden-xs"></i>
+                                                </a>
+                                            </li>
+                                        <?php } ?>
+
+                                    </ul>
+                                <?php } ?>
+                            </li>
+                        <?php } ?>
+
+                    </ul>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 hidden-sm hidden-xs">
+                    <div class="ui-policy">
+                        <a target="_blank" href="#" class="si nth1">Giao toàn Quốc</a>
+                        <a target="_blank" href="#" class="si nth2">Miễn phí vận chuyển</a>
+                        <a target="_blank" href="#" class="si nth3">Miễn phí cà thẻ VISA, MASTER, ATM</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+</section>
 <div id="content">
     <div class="container">
-        <?php $this->load->view('front/block/breadcrumb',$breadcrumb)?>
         <div class="clear h2"></div>
         <div id="col-right" class="col-xs-12 item-detail">
 
@@ -117,3 +172,4 @@
         </div>
     </div>
 </div>
+<div style="clear: both; height: 10px"></div>

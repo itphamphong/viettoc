@@ -10,6 +10,7 @@
                         <p> E-mail : laptop2nd@gmail.com</p>
                     </div>
                 </div>
+                </div>
                 <div class="col-md-2 col-sm-2 col-xs-6 col-pay">
                     <div class="payment-block">
                         <p>CHẤP NHẬN THANH TOÁN</p><i class="fa fa-cc-visa"></i><i class="fa fa-cc-mastercard"></i>

@@ -127,17 +127,19 @@ class Item extends MX_Controller {
         if(!isset($data['category']->id)) redirect($site);
         $data['title']=$data['category']->category_name;
         $data['info']=$this->global_function->show_company($lang);
-        if($data['category']->category_type==1) {
-            $data['list_cate_child'] = $this->a_category->show_list_category_page(array("category_parent.parent_id" => $data['category']->id, "category_status" => 1), $lang, 0);
+        if($data['category']->category_top==0) {
+            $data['list_child'] = $this->a_category->show_list_category_page(array("category_top" => $data['category']->id, "category_status" => 1), $lang, 0);
             $data['breadcrumb']='<li><a href="'.$data['category']->category_link.'">'.$data['category']->category_name.'</a></li>';
             $this->template->write_view('content', 'public/category', $data, TRUE);
-        }else if($category->category_type==2){
-            $data['breadcrumb']='<li><a href="'.$data['category']->category_link.'">'.$data['category']->category_name.'</a></li>';
-            $data['list_product'] = $this->a_item->show_list_item_no_sale_page_category_limit_where_in($category->id, $lang,0);
-            $this->template->write_view('content', 'public/product', $data, TRUE);
-        }else if($category->category_type==3){
-            $data['breadcrumb']='<li><a href="'.$data['category']->category_link.'">'.$data['category']->category_name.'</a></li>';
-            $data['list_product'] = $this->a_item->show_list_item_no_sale_page_category_limit_where_in($category->id, $lang,0);
+        }else{
+            $params = array(
+                'lang' => $lang,
+                'status' => 2,
+                'category_id' => $data['category']->id
+            );
+            $data['list_item'] = $this->a_item->show_list_item_params($params);
+            $data['breadcrumb'] = '<li><a href="' . $data['category']->category_link . '">' . $data['category']->category_name . '</a></li>';
+            $data['list_product'] = $this->a_item->show_list_item_no_sale_page_category_limit_where_in($category->id, $lang, 0);
             $this->template->write_view('content', 'public/product', $data, TRUE);
         }
 

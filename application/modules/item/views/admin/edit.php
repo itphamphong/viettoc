@@ -118,7 +118,7 @@
             <div class="col_full fleft info-item">
                 <div class="title col_full fleft">NHÓM SẢN PHẨM</div>
                 <div class="clear he1"></div>
-                <?php foreach ($this->m_item->show_list_category_where(array("category.category_type" => 2, 'category.category_status' => '1')) as $row) {
+                <?php foreach ($this->m_item->show_list_category_where(array("category.category_type" => 2, 'category.category_status' => '1', 'category.category_top' => 0)) as $row) {
                     $params = array(
                         "where" => array('item_id' => $item->id, 'category_id' => $row->id),
                         "table" => "item_category"
@@ -128,9 +128,37 @@
                     <div class="text-left col-xs-4" style="list-style: none">
                         <div class="checkbox col-xs-12">
                             <label class="normal col-xs-12">
-                                <input <?php if($count_p>0)  echo 'checked' ?> type="checkbox" value="<?php echo $row->id ?>" name="category[]" data-id="<?php echo $row->id ?>"
-                                       data-url="<?php echo site_url('admin/item/load_tmp') ?>"><strong><?php echo $row->category_name ?></strong>
+                                <input <?php if ($count_p > 0) echo 'checked' ?> type="checkbox" value="<?php echo $row->id ?>" name="category[]" data-id="<?php echo $row->id ?>"
+                                                                                 data-url="<?php echo site_url('admin/item/load_tmp') ?>"><strong><?php echo $row->category_name ?></strong>
                             </label>
+
+                            <?php foreach ($this->m_item->show_list_category_where(array("category.category_type" => 2, 'category.category_status' => '1', 'category.category_top' => $row->id)) as $r) {
+                                $params_child = array(
+                                    "where" => array('item_id' => $item->id, 'category_id' => $r->id),
+                                    "table" => "item_category"
+                                );
+                                $count_child = $this->global_function->count_tableWhere($params_child);
+                                ?>
+                                <label class="normal col-xs-12">
+                                    <input <?php if ($count_child > 0) echo 'checked' ?> type="checkbox" value="<?php echo $r->id ?>" name="category[]"
+                                                                                         data-id="<?php echo $r->id ?>"
+                                                                                         data-url="<?php echo site_url('admin/item/load_tmp') ?>">|--<?php echo $r->category_name ?>
+                                </label>
+                                <?php foreach ($this->m_item->show_list_category_where(array("category.category_type" => 2, 'category.category_status' => '1', 'category.category_top' => $r->id)) as $rr) {
+                                    $params_child2 = array(
+                                        "where" => array('item_id' => $item->id, 'category_id' => $rr->id),
+                                        "table" => "item_category"
+                                    );
+                                    $count_child2 = $this->global_function->count_tableWhere($params_child2);
+                                    ?>
+                                    <label class="normal col-xs-12">
+                                        <input <?php if ($count_child2 > 0) echo 'checked' ?> type="checkbox" value="<?php echo $rr->id ?>" name="category[]"
+                                                                                              data-id="<?php echo $rr->id ?>"
+                                                                                              data-url="<?php echo site_url('admin/item/load_tmp') ?>">&nbsp;
+                                        &nbsp;|----<?php echo $rr->category_name ?>
+                                    </label>
+                                <?php } ?>
+                            <?php } ?>
                         </div>
                     </div>
                 <?php } ?>

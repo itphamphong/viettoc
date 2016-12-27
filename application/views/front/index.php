@@ -30,6 +30,7 @@ $info = $this->global_function->show_company($lang);
     <link href="<?php echo base_url() ?>themes/front/js/owl-carousel/owl.theme.css" rel="stylesheet">
     <script src="<?php echo base_url() ?>themes/front/js/owl-carousel/owl.carousel.js"></script>
     <script src="<?php echo base_url() ?>themes/front/js/owl-carousel/ajax.js"></script>
+    <script src="<?php echo base_url() ?>themes/front/js/functions.js"></script>
 <script>
     $(document).ready(function(){
         //alert($(window).width());

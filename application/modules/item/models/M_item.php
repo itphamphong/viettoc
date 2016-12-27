@@ -111,7 +111,7 @@ class M_item extends CI_Model {
     }
 
     /**
-      TABLE ABOUT CATEGORY
+    TABLE ABOUT CATEGORY
      */
     //===============check is category language=====================
     function check_cate_detail($id_cate, $lang) {
@@ -129,7 +129,6 @@ class M_item extends CI_Model {
         $this->db->order_by('category.id', "DESC");
         $this->db->from('category');
         $this->db->join('categorydetail', 'categorydetail.category_id=category.id');
-        $this->db->join('category_parent', 'category_parent.parent_id != category.id');
         $this->db->join('country', 'categorydetail.country_id=country.id');
         return $this->db->get()->result();
     }
@@ -166,7 +165,7 @@ class M_item extends CI_Model {
         $this->db->join('country', 'categorydetail.country_id=country.id');
         $data= $this->db->get()->row();
         if($data->category_top==0){
-           $name=$data->category_name;
+            $name=$data->category_name;
         }else{
             $d=$this->show_detail_category_id($data->category_top);
             $name=$d->category_name."<br> |--".wordwrap($data->category_name, 20, "<br />\n");

@@ -21,7 +21,7 @@ class Home extends MX_Controller
         $data['lang'] = $lang;
         $data['info'] = $this->global_function->show_company($lang);
         $data["home"] = 1;
-        $data['list_cate'] = $this->a_item->show_list_category_where(array("category.category_type" => 1, 'category.category_status' => '1'), $lang, 4);
+        $data['list_cate'] = $this->a_item->show_list_category_where(array('category.category_status' => '1'), $lang, 4);
         $this->template->write('title', $data['info']->name);
         $params=array(
             "select"=>'article_name,article_link,article.id,article_type,article_description,choose_upload,article.picture,article.alt_picture,article_summary',

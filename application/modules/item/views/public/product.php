@@ -1,47 +1,66 @@
-<div id="round-menu-top" class="im_relative">
-    <div class="container">
-        <?php $this->load->view('front/block/menu_top')?>
-    </div>
-</div>
-<div id="content">
-    <div class="container">
-        <?php $this->load->view('front/block/breadcrumb',$breadcrumb)?>
-        <div class="clear h2"></div>
-        <?php $this->load->view('menu_left',array('urlp'=>$this->uri->segment(2),'urlc'=>$category->category_link))?>
-        <div id="col-right" class="col-sm-9  col-xs-12">
-            <div class="title"><?php echo $category->category_name?> <a href="<?php echo site_url($lang."/cart")?>" class="text-cart pull-right"><i class="fa fa-shopping-cart"></i> Giỏ hàng
-                    <?php if($this->cart->total_items() >0){ ?><i id="num-cart">(<?php echo $this->cart->total_items();?>)</i><?php }?></a></div>
-            <?php foreach($list_product as $p){
-                if ($p->choose_upload == 1) {
-                    $src = base_url() . "uploads/Images/product/" . $p->picture;
-                } else if ($p->choose_upload == 2) {
-                    $src = base_url() . $p->picture;
-                } else $src = '';
-                ?>
-                <div class="col-sm-4  col-xs-6 col-sml-12 i-item">
-                    <a  class="info" href="<?php echo site_url($lang."/".$this->uri->segment(2)."/".$category->category_link."/".$p->item_link)?>">
-                        <div class="r-img">
-                            <img src="<?php echo $src;?>"  onerror="this.src='<?php echo base_url()?>themes/back/images/text.png';">
-                        </div>
-
-                        <div class="top"></div>
-                        <div class="pname">
-                        <?php echo $p->item_name?>
-                        </div>
-                        <div class="bottom"></div>
-                        <div class="pname">
-                            <?php if($p->value>0){?>
-                            <div class="col-sm-6 col-xs-12 value"><?php echo $this->global_function->get_price($p->value) ?></div>
-                            <div class="col-sm-6 col-xs-12 price"><?php echo $this->global_function->get_price($p->price) ?></div>
-                            <?php }else{?>
-                                <div class="col-sm-12 price"><?php echo $this->global_function->get_price($p->price) ?></div>
-                            <?php }?>
-                        </div>
-                    </a>
-                    <div class="i-btn btn-cart" onclick="AddCartAjax(this)" data-id="<?php echo $p->id?>" data-url="<?php echo site_url('add-cart')?>"> <i class="fa  fa-shopping-cart"></i> Giỏ hàng</div>
-                    <a class="i-btn btn-view pull-right" href="<?php echo site_url($lang."/".$this->uri->segment(2)."/".$category->category_link."/".$p->item_link)?>"> <i class="fa fa-sign-in"></i> Chi tiết</a>
-                </div>
-            <?php }?>
+<section class="gt-2ad">
+    <div class=" default_width">
+        <div class="container">
+            <div class="row">
+                <?php echo modules::run('banner/banner/Line', 1, $category->id, $lang) ?>
+            </div>
         </div>
     </div>
-</div>
+</section>
+<!--end advertise--><!--new product-->
+<section class="gt-group">
+    <div class="default_width">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ui-h">
+                    <?php
+                    if ($category->choose_upload == 1) {
+                        $src = base_url() . "uploads/Images/product/" . $category->picture;
+                    }else if ($category->choose_upload == 2) {
+                        $src = base_url() . $list->picture;
+                    }
+                    ?>
+                    <i class="ui-head ui-icon1 nobg"><img src="<?php echo $src ?>" width="26"></i>
+                    <span><?php echo $category->category_name ?></span>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ui-gt-block">
+                    <?php foreach ($list_item as $item) {
+                        $category = $this->a_item->show_detail_item_cate(array('item_id' => $item->id, "category_top !=" => 0), $lang);
+                        $parent = $this->a_category->show_detail_category_where(array('category_id' => $category->category_top), $lang);
+                        if (isset($parent->category_link) && isset($category->category_link)) {
+                            $link = $parent->category_link . "/" . $category->category_link . "/" . $item->item_link;
+                        }else{
+                            $link = "#";
+                        }
+                        ?>
+                        <div class="col-lg-2 col-md-4 col-sm-4 col-xs-6">
+                            <div class="ui-block">
+                                <div class="ui-img-block">
+                                    <?php $this->load->view('front/block/load_picture', array("item" => $item, 'folder' => 'product')); ?>
+                                </div>
+                                <div class="ui-hyperlink">
+                                    <a href="<?php echo $link ?>">
+                                        <?php echo $item->item_name ?>
+                                    </a>
+                                </div>
+                                <div class="ui-price"><?php echo $this->global_function->get_price($item->price) ?></div>
+                                <div class="ui-quick">
+                                    <div class="quickview">
+                                        <a href="#" class="fa fa-eye"><span>Quick view</span></a>
+                                    </div>
+                                    <div class="wishlist">
+                                        <a href="#" class="fa fa-heart"><span>Wish List</span></a>
+                                    </div>
+                                    <div class="shoping">
+                                        <a class="fa fa-shopping-cart my-cart-btn"><span>Add cart</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!--end col-lg-12-->
+                    <?php } ?>
+                </div><!--end col-lg-12-->
+            </div>
+        </div>
+    </div>
+</section>
+<!--end new product--><!--advertise-->

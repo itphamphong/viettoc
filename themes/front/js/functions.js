@@ -1,5 +1,8 @@
 // load hotel of location
 $(document).ready(function () {
+    $('.page-menu').click(function(){
+       $(".page-menu li.h").toggle();
+    });
     $(window).scroll(function(){
         if($(window).scrollTop()>300){
             $("#scroll_top").fadeIn();
@@ -468,7 +471,7 @@ function AddCartDetail(e){
     var id=$(e).attr('data-id');
     var  url=$(e).attr('data-url');
     var  url_cart=$(e).attr('data-cart');
-    var number=$("#quantity").val();
+    var number=$("#quantity option:selected").val();
     $.ajax({
         url: url,
         type: "POST",

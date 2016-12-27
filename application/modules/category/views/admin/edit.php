@@ -9,7 +9,6 @@
             <?php foreach($this->global_function->list_tableWhere(array("status"=>1),"country") as $lang){?>
             <?php echo form_error("name_".$lang->name)?>
             <?php }?>
-
         </p>
     </div>
     <div class="clear he1"></div>
@@ -25,24 +24,29 @@
                         ?>
                         <div class="form-group col-lang col-<?php echo $lang->name ?>">
                             <label class="col-xs-2 control-label normal">Tên</label>
-                            <div class="col-sm-6">
-                                <input class="form-control" data-url="#item_link_<?php echo $lang->name ?>" onblur="ChangeUrl(this)" type="text" id="name_<?php echo $lang->name ?>" name="name_<?php echo $lang->name ?>" value="<?php echo set_value("name_".$lang->name,isset($category->category_name) ? $category->category_name : '')?>">
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" data-url="#item_link_<?php echo $lang->name ?>" onblur="ChangeUrl(this)" id="name_<?php echo $lang->name ?>" name="name_<?php echo $lang->name ?>" value="<?php echo set_value("name_".$lang->name,isset($category->category_name) ? $category->category_name : '')?>">
+                            </div>
+                        </div>
+                        <div class="form-group col-lang col-<?php echo $lang->name ?>">
+                            <label class="col-xs-2 control-label normal">Thẻ URL</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" id="item_link_<?php echo $lang->name ?>" name="item_link_<?php echo $lang->name ?>" value="<?php echo set_value("item_link_".$lang->name,isset($category->category_link)?$category->category_link:"")?>">
+                                <?php echo form_error("name_seo_".$lang->name)?>
                             </div>
                         </div>
                     <?php }?>
                     <div class="clear"></div>
-                    <div class="form-group <?php if($type ==3) echo "hidden"?>">
+                    <div class="form-group ">
                         <label class="col-xs-2 control-label normal">Danh mục cha</label>
-                        <div class="col-sm-6">
-                            <select name="category[]" multiple class="chosen-select" style="width:100%;">
-                                <?php foreach ($this->m_item->show_list_category_where(array("category_top" => 0, "category_type" => 2)) as $a) {
-                                    $params = array(
-                                        "where" => array('category_id' =>$id, 'parent_id' => $a->id),
-                                        "table" => "category_parent"
-                                    );
-                                    echo $count = $this->global_function->count_tableWhere($params);
-                                    ?>
-                                    <option value="<?php echo $a->id?>" <?php if($count >0){?> selected <?php }?>><?php echo $a->category_name?></option>
+                        <div class="col-sm-10">
+                            <select class="form-control" name="category">
+                                <option value="0">Danh mục cha</option>
+                                <?php foreach ($this->m_item->show_list_category_where(array("category_top" => 0, "category_type" => 2)) as $a) { ?>
+                                    <option value="<?php echo $a->id?>" <?php if($a->id==$t->category_top){?> selected <?php }?>><?php echo $a->category_name?></option>
+                                    <?php foreach ($this->m_item->show_list_category_where(array("category_top" => $a->id, "category_type" => 1)) as $b) { ?>
+                                        <option value="<?php echo $b->id?>" <?php if($b->id==$t->category_top){?> selected <?php }?>>&nbsp; &nbsp;|--<?php echo $b->category_name?></option>
+                                    <?php }?>
                                 <?php }?>
                             </select>
                         </div>
@@ -107,13 +111,6 @@
                         $category = $this->m_item->show_detail_category_id($id, $lang->name);
                         ?>
                         <div class="form-group col-lang col-<?php echo $lang->name ?>">
-                            <label class="col-xs-2 control-label normal">Thẻ URL</label>
-                            <div class="col-sm-6">
-                                <input class="form-control" type="text" id="item_link_<?php echo $lang->name ?>" name="item_link_<?php echo $lang->name ?>" value="<?php echo set_value("item_link_".$lang->name,isset($category->category_link)?$category->category_link:"")?>">
-                                <?php echo form_error("name_seo_".$lang->name)?>
-                            </div>
-                        </div>
-                        <div class="form-group col-lang col-<?php echo $lang->name ?>">
                             <label class="col-xs-2 control-label normal">Thẻ tiêu đề</label>
                             <div class="col-sm-6">
                                 <input class="form-control" type="text"  name="name_seo_<?php echo $lang->name ?>" value="<?php echo set_value("name_seo_".$lang->name,isset($seo->name_seo)?$seo->name_seo:"")?>">
@@ -145,15 +142,5 @@
     <div class="clear he3"></div>
 </div>
 <div class="clear"></div>
-<script src="<?php echo base_url() ?>themes/back/js/chosen-select/chosen.jquery.js"></script>
-<script src="<?php echo base_url() ?>themes/back/js/chosen-select/prism.js"></script>
-<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>themes/back/js/chosen-select/chosen.css"/>
-<script>
-    jQuery(document).ready(function() {
-        jQuery(".chosen-select").chosen();
-    });
-
-</script>
-
 
 

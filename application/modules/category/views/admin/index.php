@@ -10,6 +10,7 @@
             </p>
             <span class="i-btn i-save-continues" onclick="$('.a_update').trigger('click')">Cập nhật</span>
             <a class="i-btn i-delete" onclick="Delete()">Xoá</a>
+
         </div>
         <div class="clear he1"></div>
         <div class="col-lx-12 pr0">
@@ -19,6 +20,7 @@
                     <th>Tên</th>
                     <th>Thứ tự</th>
                     <th>Trạng thái</th>
+                    <th>Hot</th>
                     <th>Hành động</th>
                 </tr>
                 <?php  foreach ($category as $i) {
@@ -44,6 +46,7 @@
                                 </div>
                             <?php }?>
                         </td>
+                        <td></td>
                         <td class=" ">
                             <a href="<?php echo base_url()?>admin/category/edit/<?php echo $type."/". $i->id ?>" class="btn  btn-sm i-btn  ">
                                 <i class="fa  icon-black"></i> Sửa
@@ -53,10 +56,10 @@
                             </a>
                         </td>
                     </tr>
-                    <?php   foreach ($this->a_category->show_list_category_parent($i->id) as $j) {?>
+                    <?php   foreach ($this->m_item->show_list_category_where(array("category_top" => $i->id)) as $j) {?>
                         <tr class="tr-product">
                             <td><input type="checkbox" value="check_item[<?php echo $j->id ?>]" name="checkall[<?php echo $j->id ?>]" class="checkall"  /></td>
-                            <td class="text-left">|--<?php echo $j->category_name?></td>
+                            <td class="text-left">&nbsp; &nbsp;|--<?php echo $j->category_name?></td>
 
                             <td>
                                 <span title="Sửa" class="change_weight" onclick="ChangeW(this)"><?php echo $j->category_weight?></span>
@@ -74,6 +77,16 @@
                                     </div>
                                 <?php }?>
                             </td>
+                            <td>  <?php if($j->category_hot==1){?>
+                                    <div class="checkbox-inline btn default btn-status status" data-id="<?php echo $j->id?>" data="0" onclick="Active(this)" data-url="<?php echo base_url("admin/category/hot") ?>">
+                                        <?php echo ACTIVE ?>
+                                    </div>
+                                <?php }else{?>
+                                    <div class="checkbox-inline btn default btn-status no-status" data-id="<?php echo $j->id?>" data="1" onclick="Active(this)" data-url="<?php echo base_url("admin/category/hot") ?>">
+                                        <?php echo NO_ACTIVE ?>
+                                    </div>
+                                <?php }?>
+                            </td>
                             <td class=" ">
                                 <a href="<?php echo base_url()?>admin/category/edit/<?php echo $type."/". $j->id ?>" class="btn  btn-sm i-btn">
                                     <i class="fa  icon-black"></i> Sửa
@@ -83,6 +96,47 @@
                                 </a>
                             </td>
                         </tr>
+                        <?php   foreach ($this->m_item->show_list_category_where(array("category_top" => $j->id)) as $k) {?>
+                            <tr class="tr-product">
+                                <td><input type="checkbox" value="check_item[<?php echo $k->id ?>]" name="checkall[<?php echo $k->id ?>]" class="checkall"  /></td>
+                                <td class="text-left">&nbsp; &nbsp; &nbsp;&nbsp;|----<?php echo $k->category_name?></td>
+
+                                <td>
+                                    <span title="Sửa" class="change_weight" onclick="ChangeW(this)"><?php echo $k->category_weight?></span>
+                                    <div class="col-center">
+                                        <input type="text" name="weight[]" class="weight form-control" value="<?php echo $k->category_weight?>">
+                                    </div>
+                                </td>
+                                <td>  <?php if($k->category_status==1){?>
+                                        <div class="checkbox-inline btn default btn-status status" data-id="<?php echo $k->id?>" data="0" onclick="Active(this)" data-url="<?php echo base_url("admin/category/active") ?>">
+                                            <?php echo ACTIVE ?>
+                                        </div>
+                                    <?php }else{?>
+                                        <div class="checkbox-inline btn default btn-status no-status" data-id="<?php echo $k->id?>" data="1" onclick="Active(this)" data-url="<?php echo base_url("admin/category/active") ?>">
+                                            <?php echo NO_ACTIVE ?>
+                                        </div>
+                                    <?php }?>
+                                </td>
+                                <td>  <?php if($k->category_hot==1){?>
+                                        <div class="checkbox-inline btn default btn-status status" data-id="<?php echo $k->id?>" data="0" onclick="Active(this)" data-url="<?php echo base_url("admin/category/hot") ?>">
+                                            <?php echo ACTIVE ?>
+                                        </div>
+                                    <?php }else{?>
+                                        <div class="checkbox-inline btn default btn-status no-status" data-id="<?php echo $k->id?>" data="1" onclick="Active(this)" data-url="<?php echo base_url("admin/category/hot") ?>">
+                                            <?php echo NO_ACTIVE ?>
+                                        </div>
+                                    <?php }?>
+                                </td>
+                                <td class=" ">
+                                    <a href="<?php echo base_url()?>admin/category/edit/<?php echo $type."/". $k->id ?>" class="btn  btn-sm i-btn">
+                                        <i class="fa  icon-black"></i> Sửa
+                                    </a>
+                                    <a href="<?php echo base_url()?>admin/category/delete/<?php echo $type."/".$k->id ?>"  class="btn  btn-sm i-btn">
+                                        <i class="fa  icon-black "></i> Xoá
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php }?>
                         <?php }?>
                 <?php }?>
             </table>

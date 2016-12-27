@@ -16,7 +16,7 @@ class Admin extends CI_Controller {
         $this->load->helper(array('url', 'text', 'form', 'file'));
         $this->load->library(array('session', 'form_validation'));
         $this->load->database();
-        $this->load->model(array('item/m_item', 'm_session', 'general','a_category'));
+        $this->load->model(array('item/m_item', 'm_session', 'general'));
         date_default_timezone_set('Asia/Saigon');
         $this->template->set_template('admin');
     }
@@ -46,14 +46,12 @@ class Admin extends CI_Controller {
             redirect(site_url('admin/category/index/' . $type) . '?messager=success');
         }
         if($type==1){
-            $title="Quản lý mô hình kinh doanh";
-        }else if($type==2){
             $title="Quản lý nhóm";
-        }else if($type==3){
-            $title="Quản lý thương hiệu";
+        }else if($type==2){
+            $title="Quản lý nhà sản xuất";
         }
         $data['breadcrumb'] = '<a href="'.base_url().'admin">Trang chủ</a> <i class="fa fa-angle-right"></i> <a>'.$title.'</a>';
-        $data['category'] = $this->m_item->show_list_category_where(array("category.category_type" => $type));
+        $data['category'] = $this->m_item->show_list_category_where(array("category.category_type" => $type, "category.category_top" => 0));
         $data['type'] = $type;
         $this->template->write('mod', "category_".$type);
         $this->template->write_view('content', 'admin/index', $data, TRUE);
@@ -78,7 +76,7 @@ class Admin extends CI_Controller {
                 $picture="NULL";
                 if($choose==1){
                     if ((!empty($_FILES['picture']['name']))) {
-                        $picture=$this->global_function->upload_img("picture","product",0,0);
+                        $picture=$this->global_function->upload_img("picture","category",0,0);
                     }
                 }else if($choose==2){
                     $picture = substr($this->input->post('picture_galary'), strpos($this->input->post('picture_galary'), "uploads"));
@@ -90,6 +88,7 @@ class Admin extends CI_Controller {
                     'date_modify' => date('Y-m-d H:i:s'),
                     'date_create' => date('Y-m-d H:i:s'),
                     'category_type' => $type,
+                    'category_top' => $this->input->post('category'),
                     'user_id' => $this->m_session->userdata('admin_login')->user_id,
                     'category_hot' => $this->input->post('hot'),
                     'category_status' => $this->input->post('status'),
@@ -100,12 +99,6 @@ class Admin extends CI_Controller {
                 $this->db->insert('category', $sql);
                 $category_id = $this->db->insert_id();
                 if(isset($category_id)) {
-                    $category=$this->input->post('category');
-                    if(!empty($category)){
-                        foreach($category as $ca){
-                            $this->db->insert('category_parent',array('category_id'=>$category_id,'parent_id'=>$ca));
-                        }
-                    }
                     foreach($this->global_function->list_tableWhere(array("status"=>1),"country") as $lang){
                         $name=$this->input->post('name_' . $lang->name);
                         $link=$this->input->post('item_link_' . $lang->name);
@@ -144,14 +137,11 @@ class Admin extends CI_Controller {
                 }
             }
         if($type==1){
-            $title="Chỉnh sửa  mô hình";
-            $ptitle="Quản lý mô hình";
+            $title="Chỉnh sửa  nhóm";
+            $ptitle="Quản lý nhóm";
         }else if($type==2){
-            $title="Chỉnh sửa nhóm sản phẩm";
-            $ptitle="Quản lý nhóm sản phẩm";
-        }else{
-            $title="Chỉnh sửa thương hiệu";
-            $ptitle="Quản lý thương hiệu";
+            $title="Chỉnh sửa nhà sản xuất";
+            $ptitle="Quản lý nhà sản xuất";
         }
         $data['breadcrumb'] = '<a href="'.base_url().'admin">Trang chủ</a><i class="fa fa-angle-right"></i>
 <a href="'.base_url().'admin/category/index/'.$type.'">'.$ptitle.'</a> <i class="fa fa-angle-right"></i> <a>'.$title.'</a>';
@@ -191,6 +181,7 @@ class Admin extends CI_Controller {
                 'category_weight' => $this->input->post('weight'),
                 'date_modify' => date('Y-m-d H:i:s'),
                 'category_type' => $type,
+                'category_top' => $this->input->post('category'),
                 'user_id' => $this->m_session->userdata('admin_login')->user_id,
                 'category_hot' => $this->input->post('hot'),
                 'category_status' => $this->input->post('status'),
@@ -202,14 +193,6 @@ class Admin extends CI_Controller {
             $this->db->update('category', $sql);
             $category_id = $id;
             if (isset($category_id)) {
-                $this->db->where('category_id',$id);
-                $this->db->delete('category_parent');
-                $category=$this->input->post('category');
-                if(!empty($category)){
-                    foreach($category as $ca){
-                        $this->db->insert('category_parent',array('category_id'=>$category_id,'parent_id'=>$ca));
-                    }
-                }
                 foreach ($this->global_function->list_tableWhere(array("status" => 1), "country") as $lang) {
                     if ($this->m_item->check_cate_detail($id, $lang->id)) {
                         $name=$this->input->post('name_' . $lang->name);
@@ -272,14 +255,11 @@ class Admin extends CI_Controller {
         }
         }
         if($type==1){
-            $title="Chỉnh sửa  mô hình";
-            $ptitle="Quản lý mô hình";
+            $title="Chỉnh sửa  nhóm";
+            $ptitle="Quản lý nhóm";
         }else if($type==2){
-            $title="Chỉnh sửa nhóm sản phẩm";
-            $ptitle="Quản lý nhóm sản phẩm";
-        }else{
-            $title="Chỉnh sửa thương hiệu";
-            $ptitle="Quản lý thương hiệu";
+            $title="Chỉnh sửa nhà sản xuất";
+            $ptitle="Quản lý nhà sản xuất";
         }
         $data['breadcrumb'] = '<a href="'.base_url().'admin">Trang chủ</a><i class="fa fa-angle-right"></i>
 <a href="'.base_url().'admin/category/index/'.$type.'">'.$ptitle.'</a> <i class="fa fa-angle-right"></i> <a>'.$title.'</a>';
@@ -293,20 +273,32 @@ class Admin extends CI_Controller {
     //============================================\
     function delete($type = 0, $id) {
         if (!($this->general->Checkpermission("delete_cate_".$type)))redirect(site_url("admin/not-permission"));
+        if (!$this->check_article($id)) {
+            redirect(site_url('admin/category/index/' . $type) . '?messager=warning');
+        }
+        if ($id == 1)
+            redirect(site_url('admin/category/index/' . $type) . '?messager=warning');
         $where = array('category_id' => $id);
         $this->db->delete('categorydetail', $where);
         $where = array('id' => $id);
         $this->db->delete('category', $where);
         redirect(site_url('admin/category/index/' . $type) . '?messager=success');
     }
+
     //============================================\
     function delete_more($type,$id) {
+
         if (!($this->general->Checkpermission("delete_cate_".$type)))
             redirect(site_url("admin/not-permission"));
+        if (!$this->check_article($id)) {
+            redirect(site_url('admin/category/index/'.$type) . '?messager=warning');
+        }
+
         $where = array('category_id' => $id);
         $this->db->delete('categorydetail', $where);
         $where = array('id' => $id);
         $this->db->delete('category', $where);
+
         return true;
     }
 

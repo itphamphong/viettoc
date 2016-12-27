@@ -14,7 +14,7 @@
 	-moz-box-sizing:border-box;
 	-webkit-box-sizing:border-box;
 	-o-box-sizing:border-box;
-	-ms-box-sizing:border-box;	
+	-ms-box-sizing:border-box;
 }
 body {
     color:#000;
@@ -92,7 +92,7 @@ ul {
    padding:0px;
 }
 li {
-    
+
     list-style: none;
 }
 ul ul {
@@ -169,85 +169,3 @@ button {
     width: 200px;
     padding: 3px;
 }
-textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
-    -moz-box-sizing: border-box;
-  	-webkit-box-sizing: border-box;
-	border-radius:2px;
-	-moz-border-radius:2px;
-	-o-border-radius:2px;
-	-ms-border-radius:2px;
-	box-sizing: border-box;
-    border: 1px solid #999;
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 20px;
-    outline: none;
-    vertical-align: middle;
-}
-
-form p {
-    float: left;
-    position: relative;
-    width: 100%;
-}
-
-form p span i {
-    color: #474747;
-    left: 16px;
-    position: absolute;
-    top: 13px;
-}
-table {
-    background-color: transparent;
-    max-width: 100%;
-    width: 100%;
-}
-th {
-    text-align: left;
-}
-table > thead > tr > th, table > tbody > tr > th, table > tfoot > tr > th, table > thead > tr > td, table > tbody > tr > td, table > tfoot > tr > td {
-    border-top: 1px solid #d2d2d2;
-    border: 1px solid #d2d2d2;
-    line-height: 2.5;
-    padding-left: 7px;
-    vertical-align: top;
-}
-table thead tr th {
-    border-top: 1px solid #d2d2d2;
-}
-.table > caption + thead > tr:first-child > th, .table > colgroup + thead > tr:first-child > th, .table > thead:first-child > tr:first-child > th, .table > caption + thead > tr:first-child > td, .table > colgroup + thead > tr:first-child > td, .table > thead:first-child > tr:first-child > td {
-	border-top: 1px solid #d2d2d2;
-}
-table > thead > tr > th {
-    border-bottom: 2px solid #d2d2d2;
-    vertical-align: bottom;
-}
-table > caption + thead > tr:first-child > th, table > colgroup + thead > tr:first-child > th, table > thead:first-child > tr:first-child > th, table > caption + thead > tr:first-child > td, table > colgroup + thead > tr:first-child > td, table > thead:first-child > tr:first-child > td 
-{
-	border-bottom: 0;
-}
-table > tbody + tbody {
-    border-top: 2px solid #d2d2d2;
-}
-.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
-    padding: 12px 16px;
-}
-p ins {
-    color: #999;
-}
-dl dd {
-    margin-left: 20px;
-}
-address {
-    font-style: italic;
-}
-::-webkit-input-placeholder {color: #fff; opacity: 1;}
-:-moz-placeholder { color: #fff; opacity: 1; }
-::-moz-placeholder { color: #fff; opacity: 1; }
-:-ms-input-placeholder {color: #fff; opacity: 1;}
-
-.c_ph::-webkit-input-placeholder {color: #787878; opacity: 1;}
-.c_ph:-moz-placeholder { color: #787878; opacity: 1; }
-.c_ph::-moz-placeholder { color: #787878; opacity: 1; }
-.c_ph:-ms-input-placeholder {color: #787878; opacity: 1;}

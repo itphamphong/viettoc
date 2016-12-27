@@ -23,17 +23,28 @@
             <div class="form-group col-lang col-<?php echo $lang->name ?>">
                 <label class="col-xs-2 control-label normal">Tên</label>
                 <div class="col-sm-6">
-                    <input class="form-control" data-url="#item_link_<?php echo $lang->name ?>" onblur="ChangeUrl(this)"  type="text" id="name_<?php echo $lang->name ?>" name="name_<?php echo $lang->name ?>" value="<?php echo set_value("name_".$lang->name,"#")?>">
+                    <input class="form-control" type="text" data-url="#item_link_<?php echo $lang->name ?>" onblur="ChangeUrl(this)" id="name_<?php echo $lang->name ?>" name="name_<?php echo $lang->name ?>" value="<?php echo set_value("name_".$lang->name,"#")?>">
+                </div>
+            </div>
+            <div class="form-group col-lang col-<?php echo $lang->name ?>">
+                <label class="col-xs-2 control-label normal">Thẻ URL</label>
+                <div class="col-sm-6">
+                    <input class="form-control" id="item_link_<?php echo $lang->name ?>" type="text"  name="item_link_<?php echo $lang->name ?>" value="<?php echo set_value("item_link_".$lang->name)?>">
+                    <?php echo form_error("item_link_".$lang->name)?>
                 </div>
             </div>
         <?php }?>
         <div class="clear"></div>
-        <div class="form-group <?php if($type ==3) echo "hidden"?>">
+        <div class="form-group ">
             <label class="col-xs-2 control-label normal">Danh mục cha</label>
             <div class="col-sm-6">
-                <select name="category[]" multiple class="chosen-select" style="width:100%;">
-                    <?php foreach ($this->m_item->show_list_category_where(array("category_top" => 0, "category_type" => 1)) as $a) {?>
+                <select class="form-control" name="category">
+                    <option value="0">Danh mục cha</option>
+                    <?php foreach ($this->m_item->show_list_category_where(array("category_top" => 0, "category_type" => 2)) as $a) { ?>
                         <option value="<?php echo $a->id?>"><?php echo $a->category_name?></option>
+                        <?php foreach ($this->m_item->show_list_category_where(array("category_top" => $a->id, "category_type" => 1)) as $b) { ?>
+                            <option value="<?php echo $b->id?>">&nbsp; &nbsp;|--<?php echo $b->category_name?></option>
+                        <?php }?>
                     <?php }?>
                 </select>
             </div>
@@ -82,7 +93,6 @@
             </div>
         </div>
     </div>
-
     <div class="clear he1"></div>
 <div class="clear he1"></div>
 <?php $this->load->view("back/inc/menu_lang")?>
@@ -94,13 +104,7 @@
             <p class="bg-warning">- Các yêu tố bên dưới hỗ trợ cho SEO Website lên các bộ máy tìm kiếm như Google, Bing, Yahoo, Ask,...</p>
         </div>
         <?php foreach($this->global_function->list_tableWhere(array("status"=>1),"country") as $lang){?>
-            <div class="form-group col-lang col-<?php echo $lang->name ?>">
-                <label class="col-xs-2 control-label normal">Thẻ URL</label>
-                <div class="col-sm-6">
-                    <input class="form-control" id="item_link_<?php echo $lang->name ?>" type="text"  name="item_link_<?php echo $lang->name ?>" value="<?php echo set_value("item_link_".$lang->name)?>">
-                    <?php echo form_error("item_link_".$lang->name)?>
-                </div>
-            </div>
+
             <div class="form-group col-lang col-<?php echo $lang->name ?>">
                 <label class="col-xs-2 control-label normal">Thẻ tiêu đề</label>
                 <div class="col-sm-6">
@@ -133,16 +137,6 @@
 <div class="clear he3"></div>
 </div>
 <div class="clear"></div>
-<script src="<?php echo base_url() ?>themes/back/js/chosen-select/chosen.jquery.js"></script>
-<script src="<?php echo base_url() ?>themes/back/js/chosen-select/prism.js"></script>
-<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>themes/back/js/chosen-select/chosen.css"/>
-<script>
-    jQuery(document).ready(function() {
-        jQuery(".chosen-select").chosen();
-    });
-
-
-</script>
 
 
 

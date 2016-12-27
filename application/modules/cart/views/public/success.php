@@ -1,8 +1,3 @@
-<div id="round-menu-top" class="im_relative">
-    <div class="container">
-        <?php $this->load->view('front/block/menu_top') ?>
-    </div>
-</div>
 <div id="content">
     <div class="container">
         <div class="col-xs-12">

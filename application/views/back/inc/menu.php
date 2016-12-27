@@ -45,5 +45,13 @@
                     </li>
                 </ul>
             </li>
+            <li class="i-pic pactive"><a>Thống kê</a></li>
+            <li class="i-search parent"><a><i class="fa fa-edit"></i>Hóa đơn</a>
+                <ul class="sub" <?php if ($mod == 'order' || $mod=='booking_flight') { ?> style="display: block" <?php } ?>>
+                    <li <?php if ($mod == 'order') { ?> class="active" <?php } ?>><a href="<?php echo site_url("admin/order") ?>" class="i-search"><i class="fa  fa-list-ul"></i>DS Mua hàng</a></li>
+
+                </ul>
+
+            </li>
     </div>
 </div>

@@ -8,9 +8,9 @@
 
                         <p><strong>Email: </strong><?php echo isset($detail->email) ? $detail->email : "" ?></p>
 
-                        <p><strong>Điện thoại di động :</strong><?php echo isset($detail->cell_phone) ? $detail->cell_phone : "" ?></p>
+                        <p><strong>Điện thoại di động :</strong><?php echo isset($detail->phone) ? $detail->phone : "" ?></p>
 
-                        <p><strong>Địa chỉ:</strong> <?php echo isset($detail->address) ? $detail->address : "" ?>
+                        <p><strong>Ghi chú:</strong> <?php echo isset($detail->notice) ? $detail->notice : "" ?>
                         </p>
                 </div>
             </div>

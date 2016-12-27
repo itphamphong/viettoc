@@ -66,28 +66,29 @@ $route["(en|vn)/(tin-tuc|news)"] = "article/ListNews/$1/$2";
 $route["(en|vn)/(tin-tuc|news)/(.+)"] = "article/DetailNews/$1/$3";
 $route['(en|vn)/(du-an|project)'] = 'item/project/$1';
 $route['(en|vn)/(promotion)'] = 'item/Promotion/$1';
+$product=$db
+    ->select("itemdetail.item_link")
+    ->get('itemdetail')->result();
+foreach ($product as $p){
+    if($p->item_link!=''){
+        $route["(.+)/(".$p->item_link.")"] = "item/Detail/vn/".$p->item_link;
+    }
+}
 $cate_parent=$db
     ->select("categorydetail.category_link")
     ->get('categorydetail')->result();
 if(count($cate_parent)>0){foreach ($cate_parent as $cate){
     if($cate->category_link!=''){
-        $product=$db
-            ->select("itemdetail.item_link")
-            ->get('itemdetail')->result();
-        foreach ($product as $p){
-            if($p->item_link!=''){
-                $route["(en|vn)/(".$cate->category_link.")/(.+)/(".$p->item_link.")"] = "item/Detail/$1/$4";
-            }
-        }
-        $route["(en|vn)/(".$cate->category_link.")"] = "item/Category/$1/$cate->category_link";
-        $route["(en|vn)/(".$cate->category_link.")/(.+)"] = "item/Category/$1/$3";
+
+        $route["(".$cate->category_link.")"] = "item/Category/vn/$cate->category_link";
+        $route["(.+)/(".$cate->category_link.")"] = "item/Category/vn/$2";
 
 
     }}}
 
 // Cart
 $route['(add-cart)'] = "cart/add";
-$route['(.+)/(cart)'] = "cart/info/$1";
+$route['(cart)'] = "cart/info/vn";
 $route['(update-cart)'] = "cart/update_cart";
 $route['(.+)/(load-ajax-cart)'] = "cart/load_ajax/$1";
 $route['(.+)/(success)'] = "cart/success/$1";

@@ -17,7 +17,7 @@ class Admin extends CI_Controller
         $this->load->helper(array('url', 'text', 'form', 'file'));
         $this->load->library(array('session', 'form_validation', 'ftp'));
         $this->load->database();
-        $this->load->model(array('m_item', 'general', 'tags/m_tags'));
+        $this->load->model(array('m_item', 'general', 'tags/m_tags','category/a_category'));
         $this->load->model('global_function');
         $this->load->model('m_session');
         $this->template->set_template('admin');
